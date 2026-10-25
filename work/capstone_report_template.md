@@ -86,10 +86,11 @@ Before submission, verify the exact dependency installation commands and Python 
 
 ## 9. Acknowledgments & data credit
 
-One short section at the bottom of the deployed paper: "Built on the FlyRank ML Internship
-dataset" **linking to https://flyrank.ai**. Crediting your data source is standard research
-practice — and it's on the capstone's required-section list, so a paper without it isn't done.
+This project was completed as part of the FlyRank ML Internship and uses the FlyRank ML Internship dataset for content performance analysis.
 
+Data source: [FlyRank](https://flyrank.ai).
+
+The findings are based on analysis of the available anonymized dataset and should be interpreted within its limitations. The results do not imply endorsement of the recommendations by FlyRank.
 ---
 
 > **Claims checklist before submitting:** observed / measured / directional / decision-support
