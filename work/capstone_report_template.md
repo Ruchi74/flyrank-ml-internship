@@ -1,9 +1,9 @@
 # Capstone Report — <your lane>
 
-- **Author:**
-- **Lane:**
-- **Repo:**
-- **Date:**
+- **Author:** Ruchita Mohan Barhate 
+- **Lane:** Content Performance Analysis
+- **Repo:** Ruchi74/flyrank-ml-internship
+- **Date:** 25 October 2026
 
 > Copy this file to `work/capstone_report.md` and fill it in as you build. Sections 1–8
 > mirror the Pass / Needs-Work rubric axes, so nothing here is optional. Sections 0 and 9
