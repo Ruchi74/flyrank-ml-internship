@@ -17,9 +17,7 @@ what the output is for. This is the top of your deployed paper.
 
 ## 1. Problem framing
 
-What decision does this support? Name the unit of analysis (page, client, day…), the output
-(score, rank, cluster, report), the action a human takes from it, and the cost of a wrong
-call. Why does data/ML help here at all?
+This project analyzes anonymized content performance data to identify pages that may need improvement. The unit of analysis is an individual content page. The analysis uses available metrics such as impressions, clicks, sessions, content age, and engagement to identify potential opportunities. FlyRank editors can use these findings to prioritize pages for review, investigate low click-through rates, and assess whether content may need updating. The analysis supports human decision-making; it does not guarantee future performance or prove that any single factor causes a change in traffic. Incorrect recommendations could waste editing time or lead to unnecessary content changes, so findings should be reviewed before action. Machine learning and data analysis help organize large datasets and identify patterns that would be difficult to review manually.
 
 ## 2. Data safety
 
