@@ -48,13 +48,16 @@
 <h2>1. Introduction</h2>
 <p>The corrected evaluation uses a client-grouped split, with 25 clients used for training and 7 separate clients held out for testing. The model achieved 51.6% accuracy and an F1-score of 0.559, while the majority-class baseline achieved 51.1% accuracy and an F1-score of 0.676. Although the model's accuracy was slightly higher, its F1-score was lower, so the results do not establish an overall improvement over the baseline. The model should therefore be treated as an experimental decision-support tool, with human reviewers verifying recommendations before making editorial changes.</p>
     <h2>2. Data</h2>
-    <p>The model report identifies the bundled anonymized starter dataset, <code>data/raw/content_refresh_anonymized.csv</code>, as its source. It contains 30,000 rows, including 16,262 rows labelled as declining (reported rate: 0.542).</p>
-    <p>The exact date window, source-table lineage, and release details should be verified from the project documentation before publication. The report states that titles, URLs, client names, domains, and keywords are not used by the model.</p>
+    <p>This project uses the anonymized FlyRank ML Internship starter dataset containing 30,000 content-item rows and 44 columns. The dataset includes content-related attributes and performance signals used to explore which pages may require further editorial review.</p>
+    <p>The target label identifies whether a content item is classified as declining. In the prepared dataset, 16,262 rows are labelled as declining, representing approximately 54.2% of the records. This label is used for model evaluation; it does not prove that a content refresh will improve a page's performance.</p>
+    <p>The dataset is used for exploratory analysis and model development. Because the data is anonymized and its full collection process and time window have not been independently verified, the findings should be interpreted cautiously. Further validation on new, unseen client data is needed before using the model in a real content workflow.</p>
   </section>
 
   <section>
     <h2>3. Methodology</h2>
-    <p>The target is <code>is_declining_label</code>. The reported models are Decision Tree, Logistic Regression, and Random Forest, compared with a rule-based baseline. The report identifies the validation strategy as <code>client_holdout</code>. Detailed split configuration and leakage checks should be confirmed against the experiment artifacts.</p>
+<p>The project follows a supervised machine-learning workflow. The dataset is prepared for analysis, relevant features are selected, and categorical variables are encoded before model training. Potentially identifying fields and features that could introduce target leakage are reviewed and excluded where appropriate.</p>
+ <p>To evaluate generalization to unseen clients, the corrected experiment uses a client-grouped split. Data from 25 clients is used for training, while data from 7 separate clients is reserved for testing. This prevents the same clients from appearing in both sets.</p>
+  <p>The model is compared with a majority-class baseline using accuracy and F1-score. This comparison helps assess whether the model offers a meaningful improvement over a simple prediction strategy. The evaluation is preliminary and does not establish that the model will perform equally well on future data.</p>
   </section>
 
   <section>
