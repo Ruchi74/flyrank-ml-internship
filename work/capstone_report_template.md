@@ -39,8 +39,13 @@ This rule is a preliminary baseline, not a validated predictive model. A fair mo
 
 ## 4. Model / analysis
 
-Your method and why it fits the lane. The exact feature list (and what you left out on
-purpose). The target or proxy definition, in one sentence.
+The project uses exploratory data analysis and feature-leakage checks to investigate content performance patterns. The analysis examines impressions, clicks, sessions, engagement, content age, and freshness-related information to identify possible areas for editorial review.
+
+The feature-preparation workflow selected 19 original features: `search_volume`, `competition`, `cpc`, `word_count`, `char_count`, `content_age_days`, `days_since_last_update`, `impressions_90d`, `clicks_90d`, `sessions_90d`, `days_with_impressions`, `days_with_sessions`, `content_type`, `main_intent`, `provider_used`, `model_used`, `age_tier`, `freshness_tier`, and `word_count_tier`. One-hot encoding produced 42 feature columns.
+
+The analysis deliberately excluded identifiers (`content_id`, `client_id`) and outcome-related fields (`trend_direction`, `trend_pct`) from the selected feature set. Other time-window performance fields were reviewed for possible leakage.
+
+The current evidence documents data preparation and exploratory analysis; it does not establish a validated predictive model. The final report should name the exact model and target only after confirming the corresponding training and evaluation results in the repository.
 
 ## 5. Evaluation
 
