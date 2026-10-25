@@ -21,10 +21,13 @@ This project analyzes anonymized content performance data to identify pages that
 
 ## 2. Data safety
 
-Which data you used and which columns you deliberately excluded (and why). Leakage risks you
-considered — especially label-derived fields (`trend_direction`, `trend_pct`) and pseudonymous
-IDs (grouping only, never features). Confirm nothing client-identifying appears anywhere in
-`work/`.
+The project uses an anonymized content performance dataset containing 30,000 rows and 44 columns. The analysis reviewed content metrics, including impressions, clicks, sessions, content age, and engagement-related fields.
+
+Potential leakage fields such as `trend_direction` and `trend_pct` were identified and excluded from the selected model features because they describe performance outcomes and could reveal information related to the target. Identifier columns such as `content_id` and `client_id` were also excluded from model features to avoid memorizing individual pages or clients. Time-window performance metrics were reviewed carefully before feature selection.
+
+The feature-preparation workflow selected 19 original features and produced 42 encoded feature columns. Missing numeric values were handled through median imputation, and categorical features were encoded. The workflow reported no missing values in the prepared feature matrix.
+
+The dataset is described as anonymized, but the repository should still be checked for client-identifying information before submission. The leakage review helps reduce the risk of using information that would not be legitimately available at prediction time.
 
 ## 3. Baseline
 
