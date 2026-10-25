@@ -49,9 +49,11 @@ The current evidence documents data preparation and exploratory analysis; it doe
 
 ## 5. Evaluation
 
-Your split (grouped by client? time-aware?) and why. Metrics, model vs baseline **on the same
-split**. What the errors look like — a short error analysis beats a big metric table.
+The current evaluation focuses on exploratory signal audits rather than a completed, validated predictive-model comparison. The analysis checked three potential signals: low click-through rate, stale content, and low engagement.
 
+For the low-CTR test, 12,023 pages met the eligibility criteria, and 9,759 (81.17%) had CTR below 0.5. For the stale-content test, only 17 eligible pages were classified as stale for 180 days or more, so the sample was too small for a strong conclusion. For the engagement test, 7,114 pages met the minimum session requirement, and 7,113 were classified as having low engagement under the chosen threshold. This result suggests that the threshold may be too broad to distinguish useful groups.
+
+These findings are descriptive and do not demonstrate predictive performance or causation. A final model evaluation must specify the train/test split, target definition, and metrics, and compare the model with the baseline on the same held-out data. No model accuracy, AUC, or lift is claimed here because verified comparison results have not yet been established.
 ## 6. Interpretation
 
 What the model/clusters actually found. Feature importances or cluster profiles in plain
