@@ -78,11 +78,11 @@ The recommendations are decision-support suggestions, not guaranteed improvement
 
 ## 8. Reproducibility
 
-The exact commands to re-run everything from a fresh clone, your random seeds, and your
-environment (`pip freeze` highlights or `requirements.txt` deltas). If you claim a sealed or
-holdout evaluation, two things must be committed: the cell/script that builds the sealed
-frame, and the metrics file it produced — "evaluated once, blind" should be checkable from
-your repo, not taken on faith.
+The project notebooks are stored in the GitHub repository under `work/notebooks/`. The feature-leakage check and signal-audit notebooks document the data preparation, checks, and exploratory findings.
+
+To reproduce the analysis, clone the repository, install the dependencies listed in the project's dependency files, and run the notebooks in order using a compatible Python environment. The notebooks use the anonymized content performance dataset referenced in the repository. Internet access may be required to retrieve the dataset.
+
+Before submission, verify the exact dependency installation commands and Python version from the repository, then record them here. Record any random seeds used by the analysis and include the exact commands needed to reproduce the reported results. The analysis described in this report is exploratory; it does not claim a sealed or blind holdout evaluation. Any future model evaluation should commit the code that creates the holdout dataset and the resulting metrics file.
 
 ## 9. Acknowledgments & data credit
 
