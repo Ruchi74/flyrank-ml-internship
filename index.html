@@ -62,20 +62,18 @@
 
   <section>
     <h2>4. Results</h2>
-    <p>The following metrics are transcribed from the repository's model report.</p>
-    <table>
-      <thead>
-        <tr><th>Model</th><th>ROC AUC</th><th>Average precision</th><th>Precision@50</th><th>Recall</th><th>F1</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Decision Tree</td><td>0.742</td><td>0.575</td><td>0.540</td><td>0.716</td><td>0.634</td></tr>
-        <tr><td>Logistic Regression</td><td>0.700</td><td>0.522</td><td>0.400</td><td>0.567</td><td>0.566</td></tr>
-        <tr><td>Random Forest</td><td>0.750</td><td>0.618</td><td>0.740</td><td>0.744</td><td>0.640</td></tr>
-        <tr><td>Rule-based baseline</td><td>0.627</td><td>0.468</td><td>0.240</td><td>Not reported</td><td>Not reported</td></tr>
-      </tbody>
-    </table>
-    <p>The Random Forest has the highest reported ROC AUC, average precision, Precision@50, and F1-score among these listed models. The results support further investigation but do not prove that content refresh actions improve traffic or engagement.</p>
-  </section>
+<p>The corrected evaluation compares the model with a majority-class baseline using a client-grouped test split.</p>
+<table>
+  <thead>
+    <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1-score</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Corrected model</td><td>51.6%</td><td>52.3%</td><td>59.9%</td><td>0.559</td></tr>
+    <tr><td>Majority-class baseline</td><td>51.1%</td><td>Not reported</td><td>Not reported</td><td>0.676</td></tr>
+  </tbody>
+</table>
+<p>The corrected model achieved slightly higher accuracy than the majority-class baseline, but its F1-score was lower. Therefore, the results do not demonstrate an overall improvement over the baseline. The findings are preliminary and require further validation on unseen client data before the model can be considered for practical use. Model recommendations should be reviewed by humans before any content-refresh decisions are made.</p>
+</section>
 
   <section>
     <h2>5. Supporting Charts</h2>
