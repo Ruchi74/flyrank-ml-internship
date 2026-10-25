@@ -55,9 +55,15 @@ For the low-CTR test, 12,023 pages met the eligibility criteria, and 9,759 (81.1
 
 These findings are descriptive and do not demonstrate predictive performance or causation. A final model evaluation must specify the train/test split, target definition, and metrics, and compare the model with the baseline on the same held-out data. No model accuracy, AUC, or lift is claimed here because verified comparison results have not yet been established.
 ## 6. Interpretation
+The signal audit identified several patterns in the content performance dataset.
 
-What the model/clusters actually found. Feature importances or cluster profiles in plain
-words. Surprises and negative results — a well-understood "no effect" is a valid result.
+First, many eligible pages had a CTR below 0.5. This suggests that editors could investigate whether page titles, descriptions, search intent, and average position deserve review. It does not prove that these factors caused the observed CTR.
+
+Second, pages classified as stale had a more negative median trend percentage than pages updated within the previous 180 days. However, the stale group contained only 17 eligible pages, so this finding is uncertain and should not be generalized without further data.
+
+Third, almost every page meeting the engagement eligibility requirement was classified as having low engagement. This indicates that the current threshold may be too broad to separate pages meaningfully.
+
+The dataset also showed strongly right-skewed distributions and missing values in several fields. These characteristics matter when interpreting averages and preparing features. Overall, the analysis provides useful directions for further investigation, but it does not establish causal relationships or validated model feature importance.
 
 ## 7. Recommendation
 
