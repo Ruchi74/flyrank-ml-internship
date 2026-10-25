@@ -40,7 +40,7 @@
 
   <section>
     <h2>Abstract</h2>
-    <p> This study investigates how machine learning could help FlyRank prioritize existing content for refresh review. Content teams have limited time to investigate pages, so a ranked queue may help reviewers focus on items showing signs of declining performance. Using the anonymized FlyRank ML Internship starter dataset containing 30,000 content-item rows, this project compares several machine-learning models with a rule-based baseline. The Random Forest achieved a ROC AUC of 0.750, average precision of 0.618, Precision@50 of 0.740, and F1-score of 0.640 in the reported evaluation. These results suggest that the model may help rank content for human review, but they do not prove that refreshing selected content will improve performance. Further validation and monitoring are needed before operational use.</p>
+    <p> This study investigates whether machine learning can help FlyRank prioritize content for editorial review. It uses an anonymized FlyRank ML Internship dataset containing 30,000 content-item rows and 44 columns. A corrected model was evaluated using a client-grouped test split and compared with a majority-class baseline. The model achieved 51.6% accuracy and an F1-score of 0.559, while the baseline achieved 51.1% accuracy and an F1-score of 0.676. These results do not establish an overall improvement over the baseline, so the model should remain an experimental decision-support tool requiring further validation and human review.</p>
   </section>
 
   <section>
