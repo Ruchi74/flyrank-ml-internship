@@ -12,8 +12,7 @@
 
 ## 0. Abstract
 
-Five sentences, written last, placed first: question → data → method → headline result →
-what the output is for. This is the top of your deployed paper.
+This project investigates how data analysis can help identify content pages that may need editorial improvement. It uses an anonymized FlyRank ML Internship dataset containing 30,000 rows and 44 columns. The method combines exploratory data analysis, feature preparation, leakage checks, and signal audits of click-through rate, content freshness, and engagement. The audit found that 9,759 of 12,023 eligible pages had a click-through rate below 0.5, while the stale-content finding remained uncertain because only 17 eligible pages were classified as stale. The results provide decision-support signals for prioritizing editorial reviews, but they do not establish causation or demonstrate validated predictive-model performance.
 
 ## 1. Problem framing
 
