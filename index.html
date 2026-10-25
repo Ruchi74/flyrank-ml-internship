@@ -47,12 +47,7 @@
     
 <h2>1. Introduction</h2>
 <p>FlyRank's content-refresh problem involves deciding which existing pages deserve attention when reviewers have limited time. Manually reviewing every page can be time-consuming, and performance signals alone do not always explain why a page may be declining. This project explores whether machine learning can use existing content and performance signals to rank items for further investigation.</p>
-
-<p>The models are evaluated against a rule-based baseline using a client-holdout validation strategy. In the reported starter-dataset evaluation, the Random Forest achieved a Precision@50 of 0.740, compared with 0.240 for the baseline rules. This indicates that the model ranked more positive examples near the top of the review queue in this experiment. However, the result does not guarantee performance on new production data or show that refreshing a page causes its performance to improve. The intended use is decision support: human reviewers should check each recommendation and make the final editorial decision.</p>
-
-  </section>
-
-  <section>
+  <p>The models are evaluated against a rule-based baseline using a client-holdout validation strategy. In the reported starter-dataset evaluation, the Random Forest achieved a Precision@50 of 0.740, compared with 0.240 for the baseline rules. This indicates that the model ranked more positive examples near the top of the review queue in this experiment. However, the result does not guarantee performance on new production data or show that refreshing a page causes its performance to improve. The intended use is decision support: human reviewers should check each recommendation and make the final editorial decision.</p>
     <h2>2. Data</h2>
     <p>The model report identifies the bundled anonymized starter dataset, <code>data/raw/content_refresh_anonymized.csv</code>, as its source. It contains 30,000 rows, including 16,262 rows labelled as declining (reported rate: 0.542).</p>
     <p>The exact date window, source-table lineage, and release details should be verified from the project documentation before publication. The report states that titles, URLs, client names, domains, and keywords are not used by the model.</p>
