@@ -24,7 +24,11 @@
     }
     h1, h2 { color: #174a8b; }
     table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #d8deea; padding: 10px; text-align: left; }
+    th, td {
+      border: 1px solid #d8deea;
+      padding: 10px;
+      text-align: left;
+    }
     th { background: #edf3fc; }
     .note { color: #586579; }
     img { max-width: 100%; height: auto; }
@@ -32,78 +36,201 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>A Machine-Learning Approach to Identifying Content Refresh Opportunities</h1>
     <p>FlyRank ML Internship — Capstone Research Paper</p>
-    <p class="note">This study evaluates a model for prioritizing content for human review. It does not establish that refreshing content causes better outcomes.</p>
+    <p class="note">
+      This study evaluates a model for prioritizing content for human review.
+      It does not establish that refreshing content causes better outcomes.
+    </p>
   </header>
 
   <section>
-  <h2>Abstract</h2>
-  <p>This study investigates whether machine learning can help FlyRank prioritize content for editorial review. It uses an anonymized FlyRank ML Internship dataset containing 30,000 content-item rows. A corrected model was evaluated using a client-grouped test split and compared with a majority-class baseline. The model achieved 51.6% accuracy and an F1-score of 0.559, while the baseline achieved 51.1% accuracy and an F1-score of 0.676. These results do not establish an overall improvement over the baseline. The model should therefore remain an experimental decision-support tool requiring further validation and human review.</p>
-</section>
+    <h2>Abstract</h2>
+    <p>
+      This study investigates whether machine learning can help FlyRank
+      prioritize content for editorial review. It uses an anonymized dataset
+      containing 30,000 content-item rows. After filtering, 18,010 eligible
+      rows from 30 clients remained. A client-grouped split used 23 clients
+      for training and 7 held-out clients for testing. In a conservative
+      feature sensitivity check, the decision tree achieved 60.3% accuracy,
+      66.4% precision, 61.4% recall, and an F1-score of 0.638. The majority-class
+      baseline achieved 56.9% accuracy and an F1-score of 0.725. These preliminary
+      results do not demonstrate an overall improvement over the baseline on
+      F1-score. Further feature-timing verification and validation are required
+      before practical use.
+    </p>
+  </section>
 
   <section>
-    
-<h2>1. Introduction</h2>
-<p>The corrected evaluation uses a client-grouped split, with 25 clients used for training and 7 separate clients held out for testing. The model achieved 51.6% accuracy and an F1-score of 0.559, while the majority-class baseline achieved 51.1% accuracy and an F1-score of 0.676. Although the model's accuracy was slightly higher, its F1-score was lower, so the results do not establish an overall improvement over the baseline. The model should be treated as an experimental decision-support tool, with human reviewers checking recommendations before making editorial changes.</p>
+    <h2>1. Introduction</h2>
+    <p>
+      This study explores whether content-performance signals can help
+      prioritize pages for human editorial review. The evaluation uses a
+      client-grouped split, with 23 clients used for training and 7 separate
+      clients held out for testing. The conservative decision tree achieved
+      60.3% accuracy and an F1-score of 0.638, while the majority-class
+      baseline achieved 56.9% accuracy and an F1-score of 0.725. Although
+      the model achieved higher accuracy and precision, its recall and
+      F1-score were lower than the baseline's. The model should be treated
+      as experimental decision support, with human reviewers verifying
+      recommendations before making editorial changes.
+    </p>
+  </section>
+
+  <section>
     <h2>2. Data</h2>
-    <p>This project uses the anonymized FlyRank ML Internship starter dataset containing 30,000 content-item rows and 44 columns. The dataset includes content-related attributes and performance signals used to explore which pages may require further editorial review.</p>
-    <p>The target label identifies whether a content item is classified as declining. In the prepared dataset, 16,262 rows are labelled as declining, representing approximately 54.2% of the records. This label is used for model evaluation; it does not prove that a content refresh will improve a page's performance.</p>
-    <p>The dataset is used for exploratory analysis and model development. Because the data is anonymized and its full collection process and time window have not been independently verified, the findings should be interpreted cautiously. Further validation on new, unseen client data is needed before using the model in a real content workflow.</p>
+    <p>
+      This project uses the anonymized FlyRank ML Internship starter dataset
+      containing 30,000 content-item rows and 44 columns. The target identifies
+      content items whose impressions declined by at least 20% compared with
+      the previous 30-day period, among records with at least 100 previous-period
+      impressions.
+    </p>
+    <p>
+      After filtering, 18,010 rows from 30 eligible clients remained. Two clients
+      had no qualifying records. The dataset's complete collection process and
+      feature measurement windows have not been independently verified, so the
+      findings should be interpreted cautiously.
+    </p>
   </section>
 
   <section>
     <h2>3. Methodology</h2>
-<p>The project follows a supervised machine-learning workflow. The dataset is prepared for analysis, relevant features are selected, and categorical variables are encoded before model training. Potentially identifying fields and features that could introduce target leakage are reviewed and excluded where appropriate.</p>
- <p>To evaluate generalization to unseen clients, the corrected experiment uses a client-grouped split. Data from 25 clients is used for training, while data from 7 separate clients is reserved for testing. This prevents the same clients from appearing in both sets.</p>
-  <p>The model is compared with a majority-class baseline using accuracy and F1-score. This comparison helps assess whether the model offers a meaningful improvement over a simple prediction strategy. The evaluation is preliminary and does not establish that the model will perform equally well on future data.</p>
+    <p>
+      The project follows a supervised machine-learning workflow. The decline
+      target is defined using current and previous 30-day impressions. Content
+      identifiers are used for grouping and validation, not as predictive
+      features. A client-grouped split assigns 23 eligible clients to training
+      and 7 separate clients to testing, with no client overlap. Preprocessing
+      is fitted on training data only.
+    </p>
+    <p>
+      A conservative sensitivity check removes aggregate performance features
+      whose measurement windows may overlap with the target period. The resulting
+      decision tree is compared with a majority-class baseline on the same
+      held-out test set. The remaining features' measurement windows still
+      require verification; therefore, this check does not prove that every
+      feature is leakage-free.
+    </p>
   </section>
 
   <section>
-  <h2>4. Results</h2>
-  <p>The corrected evaluation compares the model with a majority-class baseline using a client-grouped test split.</p>
-  <table>
-    <thead>
-      <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1-score</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Corrected model</td><td>51.6%</td><td>52.3%</td><td>59.9%</td><td>0.559</td></tr>
-      <tr><td>Majority-class baseline</td><td>51.1%</td><td>Not reported</td><td>Not reported</td><td>0.676</td></tr>
-    </tbody>
-  </table>
-  <p>The model achieved slightly higher accuracy than the baseline, but its F1-score was lower. The results do not demonstrate an overall improvement over the baseline. Further validation on unseen client data is needed before practical use.</p>
-</section>
+    <h2>4. Results</h2>
+    <p>
+      The conservative decision tree and majority-class baseline were evaluated
+      on the same held-out test set of 3,465 rows from 7 clients.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Accuracy</th>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>F1-score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conservative decision tree</td>
+          <td>60.3%</td>
+          <td>66.4%</td>
+          <td>61.4%</td>
+          <td>0.638</td>
+        </tr>
+        <tr>
+          <td>Majority-class baseline</td>
+          <td>56.9%</td>
+          <td>56.9%</td>
+          <td>100.0%</td>
+          <td>0.725</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      The conservative model achieved higher accuracy and precision than the
+      baseline, but its recall and F1-score were lower. Its confusion matrix
+      contained 1,210 true positives, 881 true negatives, 612 false positives,
+      and 762 false negatives. The model therefore did not outperform the
+      majority baseline on F1-score. These preliminary results do not establish
+      production readiness.
+    </p>
+  </section>
+
   <section>
-  <h2>5. Discussion</h2>
-  <p>The evaluation shows that the corrected model performs slightly better than the majority-class baseline in accuracy, but its F1-score is lower. Therefore, the model has not demonstrated an overall improvement over the baseline.</p>
-  <p>The client-grouped test split evaluates the model on seven clients that were not used for training. However, this is a limited test group, and the results may not generalize to all clients or future data.</p>
-  <p>The model may help identify content items for further investigation, but its predictions should be treated as experimental. Human reviewers should verify recommendations before making content changes.</p>
-</section>
-  
+    <h2>5. Discussion</h2>
+    <p>
+      The conservative model provides a different precision-recall trade-off
+      from the majority baseline. It identifies some decline cases while
+      avoiding the strategy of predicting every item as declining. However,
+      its F1-score remains below the baseline's, and it misses some actual
+      decline cases. The test set contains only seven held-out clients, so
+      performance on other clients and future data remains uncertain.
+      Human review is required before taking action.
+    </p>
+  </section>
+
   <section>
     <h2>6. Supporting Charts</h2>
-    <p>Charts are stored in the repository under <code>outputs/charts/</code>. The relative paths below assume the repository is published from its root.</p>
+    <p>
+      Charts are stored in the repository under
+      <code>outputs/charts/</code>. The relative paths below assume the
+      repository is published from its root.
+    </p>
+
     <h3>Action mix</h3>
-    <img src="outputs/charts/action_mix.svg" alt="Chart showing the mix of recommended actions">
+    <img src="outputs/charts/action_mix.svg"
+         alt="Chart showing the mix of recommended actions">
+
     <h3>Confidence mix</h3>
-    <img src="outputs/charts/confidence_mix.svg" alt="Chart showing confidence groups">
+    <img src="outputs/charts/confidence_mix.svg"
+         alt="Chart showing confidence groups">
+
     <h3>Top reason codes</h3>
-    <img src="outputs/charts/top_reason_codes.svg" alt="Chart showing common reason codes">
+    <img src="outputs/charts/top_reason_codes.svg"
+         alt="Chart showing common reason codes">
+
     <h3>Top feature importance</h3>
-    <img src="outputs/charts/top_feature_importance.svg" alt="Chart showing top model features">
+    <img src="outputs/charts/top_feature_importance.svg"
+         alt="Chart showing top model features">
+
     <h3>Trend distribution</h3>
-    <img src="outputs/charts/trend_distribution.svg" alt="Chart showing trend distribution">
+    <img src="outputs/charts/trend_distribution.svg"
+         alt="Chart showing trend distribution">
   </section>
 
   <section>
     <h2>7. Limitations</h2>
     <ul>
-      <li>The results apply to the starter dataset and evaluation documented by the repository.</li>
-      <li>The exact date window and detailed validation configuration require verification.</li>
-      <li>Feature importance indicates model reliance, not causation.</li>
-      <li>Performance on other datasets, clients, or time periods has not been established.</li>
-      <li>The baseline's recall and F1-score were not reported and are not inferred here.</li>
+      <li>
+        The results apply only to the filtered starter dataset and the
+        client-grouped split used in this experiment.
+      </li>
+      <li>
+        The evaluation includes 23 training clients and 7 held-out clients,
+        limiting confidence about generalization.
+      </li>
+      <li>
+        The timing of remaining feature measurements must be verified to
+        assess possible target leakage.
+      </li>
+      <li>
+        The majority baseline achieved a higher F1-score than the conservative
+        decision tree.
+      </li>
+      <li>Feature importance does not establish causation.</li>
+      <li>
+        Performance on other clients, date ranges, or datasets has not
+        been established.
+      </li>
+      <li>
+        The model is an exploratory decision-support tool, not a proven
+        production solution.
+      </li>
     </ul>
   </section>
 
@@ -114,23 +241,38 @@
       <li>Check content accuracy, completeness, freshness, and audience relevance.</li>
       <li>Review impressions, clicks, engagement, and position in context.</li>
       <li>Investigate technical issues where relevant.</li>
-      <li>Measure outcomes after approved updates and avoid assuming causation.</li>
+      <li>
+        Measure outcomes after approved updates and avoid assuming causation.
+      </li>
     </ol>
-    <p>These are proposed review actions, not guaranteed outcomes. Human reviewers should approve every action.</p>
+    <p>
+      These are proposed review actions, not guaranteed outcomes. Human
+      reviewers should approve every action.
+    </p>
   </section>
 
   <section>
     <h2>9. Reproducibility</h2>
-    <p>The project repository contains the model report, source notebook, and chart artifacts. Before final publication, verify the dataset release, date window, validation details, and source of every metric against the experiment artifacts.</p>
+    <p>
+      The project repository contains the model notebook and supporting
+      artifacts. Before final publication, verify the dataset release, date
+      window, feature timing, validation configuration, and metrics against
+      the final experiment outputs. The reported results refer to the
+      conservative sensitivity-check model and its grouped test split.
+    </p>
   </section>
 
   <section>
     <h2>10. Acknowledgments and Data Credit</h2>
-    <p>Built on the <a href="https://flyrank.ai">FlyRank ML Internship dataset</a>.</p>
+    <p>
+      Built on the
+      <a href="https://flyrank.ai">FlyRank ML Internship dataset</a>.
+    </p>
   </section>
 
   <footer class="note">
     Research prototype for human-reviewed content prioritization.
   </footer>
+
 </body>
 </html>
