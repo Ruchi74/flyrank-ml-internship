@@ -67,8 +67,14 @@ The dataset also showed strongly right-skewed distributions and missing values i
 
 ## 7. Recommendation
 
-The ranked actions or decisions your output supports, and how a FlyRank editor would use them
-tomorrow. State your confidence and the limits explicitly.
+The analysis suggests the following priorities for FlyRank editors:
+
+1. **Review pages with low CTR:** Start with eligible pages that have at least 500 impressions and an average position between 1 and 20. Check titles, descriptions, search intent, and competing search results before deciding on changes.
+2. **Investigate stale content cautiously:** Review older pages for outdated facts, broken references, and content gaps. The stale-page result is based on only 17 eligible pages, so confidence in this finding is low.
+3. **Improve engagement measurement:** Revisit the low-engagement threshold because it classified nearly all eligible pages as low engagement. A better threshold should distinguish meaningful differences between pages.
+4. **Validate before making broad changes:** Track performance before and after editorial changes and, where feasible, use controlled experiments to assess their impact.
+
+The recommendations are decision-support suggestions, not guaranteed improvements. Confidence is moderate that the current audit identifies pages worth reviewing, but low that it establishes why performance changed or predicts the results of future edits. Editors should verify each page's context before taking action.
 
 ## 8. Reproducibility
 
