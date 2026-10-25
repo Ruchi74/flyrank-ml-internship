@@ -31,8 +31,11 @@ The dataset is described as anonymized, but the repository should still be check
 
 ## 3. Baseline
 
-The transparent rule or score you built first. Why it's a fair comparison, and its numbers on
-the same data and metric as your model.
+A simple rule-based approach is used as a transparent starting point for content performance analysis. Pages with at least 500 impressions and an average position between 1 and 20 are checked for low click-through rate (CTR). Pages with CTR below 0.5 are flagged for editorial review. This rule is easy to understand and provides a practical way to prioritize pages for investigation.
+
+In the signal audit, 12,023 pages met the eligibility criteria, and 9,759 (81.17%) had CTR below 0.5. The median CTR was 0.21, and the median average position was 8.2. These results show that many eligible pages could be reviewed for potential improvement, but they do not prove that changing a page will increase traffic.
+
+This rule is a preliminary baseline, not a validated predictive model. A fair model comparison requires both approaches to be evaluated on the same held-out data using the same target and metrics. Those comparative results must be added only after the model evaluation has been completed.
 
 ## 4. Model / analysis
 
