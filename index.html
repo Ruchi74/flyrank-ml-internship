@@ -46,8 +46,12 @@ The models are evaluated against a rule-based baseline using a client-holdout va
   </section>
 
   <section>
-    <h2>1. Introduction</h2>
-    <p>Reviewing large amounts of existing content manually can be time-consuming. This project investigates whether a machine-learning model can rank content items by potential decline risk and help reviewers prioritize their work. The model is intended as a decision-support tool, not an automatic publishing system.</p>
+    
+<h2>1. Introduction</h2>
+<p>FlyRank's content-refresh problem involves deciding which existing pages deserve attention when reviewers have limited time. Manually reviewing every page can be time-consuming, and performance signals alone do not always explain why a page may be declining. This project explores whether machine learning can use existing content and performance signals to rank items for further investigation.</p>
+
+<p>The models are evaluated against a rule-based baseline using a client-holdout validation strategy. In the reported starter-dataset evaluation, the Random Forest achieved a Precision@50 of 0.740, compared with 0.240 for the baseline rules. This indicates that the model ranked more positive examples near the top of the review queue in this experiment. However, the result does not guarantee performance on new production data or show that refreshing a page causes its performance to improve. The intended use is decision support: human reviewers should check each recommendation and make the final editorial decision.</p>
+
   </section>
 
   <section>
